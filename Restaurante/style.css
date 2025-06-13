@@ -1,0 +1,945 @@
+/* Glamour Gourmet - CSS Styles */
+
+/* Importando fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* Reset e configurações globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Overlay decorativo */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="20" cy="80" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Navbar customizada */
+.navbar {
+    background: rgba(0, 0, 0, 0.9) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 700 !important;
+    font-size: 1.8rem !important;
+    color: #f8f9fa !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: #ffd700 !important;
+    transform: scale(1.05);
+}
+
+.nav-link {
+    font-weight: 500 !important;
+    color: #f8f9fa !important;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #ffd700;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #ffd700 !important;
+    transform: translateY(-2px);
+}
+
+/* Container principal do formulário */
+.formulario {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.formulario::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ffd700, #ff6b6b, #4ecdc4, #45b7d1);
+    background-size: 400% 400%;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Título principal */
+.formulario h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.formulario h1::after {
+    content: '✨';
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.5; transform: translateY(-50%) scale(1); }
+    50% { opacity: 1; transform: translateY(-50%) scale(1.2); }
+}
+
+/* Título do carrinho */
+.formulario h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: #34495e;
+    margin: 30px 0 20px 0;
+    text-align: center;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+}
+
+/* Select customizado */
+#prato {
+    width: 100%;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    border: 2px solid #e0e6ed;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    background: #fff;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    appearance: none;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 20px;
+}
+
+#prato:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-2px);
+}
+
+#prato:hover {
+    border-color: #667eea;
+    transform: translateY(-1px);
+}
+
+/* Labels */
+label {
+    display: block;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+/* Inputs */
+input[type="email"],
+input[type="text"] {
+    width: 100%;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border: 2px solid #e0e6ed;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+input[type="email"]:focus,
+input[type="text"]:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-2px);
+}
+
+input[type="email"]:hover,
+input[type="text"]:hover {
+    border-color: #667eea;
+    transform: translateY(-1px);
+}
+
+/* Botões */
+button {
+    padding: 12px 25px;
+    margin: 8px 5px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transition: all 0.6s ease;
+    transform: translate(-50%, -50%);
+}
+
+button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Botão Adicionar */
+button[onclick="adicionarCarrinho()"] {
+    background: linear-gradient(135deg, #4ecdc4, #44a08d);
+    color: white;
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+}
+
+button[onclick="adicionarCarrinho()"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4);
+}
+
+/* Botão Remover */
+button[onclick="removerCarrinho()"] {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+button[onclick="removerCarrinho()"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+}
+
+/* Botão Fazer Pedido */
+button[onclick="fazerPedido()"] {
+    background: linear-gradient(135deg, #ffd700, #ffb347);
+    color: #2c3e50;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 15px 30px;
+}
+
+button[onclick="fazerPedido()"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+/* Container de resultados */
+.resultados {
+    margin-top: 30px;
+    padding: 25px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 15px;
+    border-left: 5px solid #667eea;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.resultados p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #2c3e50;
+}
+
+#total {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #27ae60;
+    text-align: center;
+    padding: 15px;
+    background: rgba(39, 174, 96, 0.1);
+    border-radius: 10px;
+    border: 2px dashed #27ae60;
+}
+
+#pedidos {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    min-height: 50px;
+    border: 1px solid #e0e6ed;
+    font-style: italic;
+    color: #7f8c8d;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .formulario {
+        margin: 20px;
+        padding: 25px;
+    }
+    
+    .formulario h1 {
+        font-size: 2rem;
+    }
+    
+    .formulario h1::after {
+        right: -30px;
+        font-size: 1.2rem;
+    }
+    
+    button {
+        width: 100%;
+        margin: 5px 0;
+    }
+    
+    .navbar-brand {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .formulario {
+        margin: 10px;
+        padding: 20px;
+    }
+    
+    .formulario h1 {
+        font-size: 1.8rem;
+    }
+    
+    input[type="email"],
+    input[type="text"],
+    #prato {
+        padding: 12px 15px;
+    }
+}
+
+/* Animações adicionais */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.formulario {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Efeito de hover nos inputs */
+input[type="email"]:focus,
+input[type="text"]:focus,
+#prato:focus {
+    animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1) translateY(-2px); }
+    50% { transform: scale(1.02) translateY(-2px); }
+    100% { transform: scale(1) translateY(-2px); }
+}
+
+
+
+/* ===== ESTILOS PARA PÁGINA SOBRE ===== */
+
+/* Container principal da página sobre */
+#sobre {
+    position: absolute;
+    left: -300px;
+    max-width: 550px;
+    margin: 60px auto 40px auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: #2c3e50;
+    text-align: center;
+    position: relative;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+#sobre::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ffd700, #ff6b6b, #4ecdc4, #45b7d1);
+    background-size: 400% 400%;
+    animation: gradientShift 3s ease infinite;
+    border-radius: 20px 20px 0 0;
+}
+
+/* Botão de reserva */
+#reserva {
+    position: absolute;
+    left:400px;
+    margin: 40px auto;
+    padding: 18px 40px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#reserva::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transition: all 0.6s ease;
+    transform: translate(-50%, -50%);
+}
+
+#reserva:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+#reserva:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(255, 107, 107, 0.5);
+    background: linear-gradient(135deg, #ff5252, #d32f2f);
+}
+
+#reserva:active {
+    transform: translateY(-2px);
+}
+
+/* Imagem do restaurante */
+#restaurante {
+    position: absolute;
+    top: 89px;
+    left: 650px;
+    width: 43%;
+    max-width: 900px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    margin: 40px auto;
+    display: block;
+    transition: all 0.3s ease;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+#restaurante:hover {
+    transform: scale(1.02);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== ESTILOS PARA PÁGINA CARDÁPIO ===== */
+
+/* Carousel customizado */
+.carousel {
+    margin: 40px auto;
+    max-width: 1200px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.carousel-inner {
+    border-radius: 20px;
+}
+
+.carousel-item img {
+    border-radius: 20px;
+    object-fit: cover;
+    filter: brightness(0.8);
+    transition: all 0.3s ease;
+}
+
+.carousel-item:hover img {
+    filter: brightness(1);
+    transform: scale(1.02);
+}
+
+/* Captions do carousel */
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: slideInUp 0.6s ease-out;
+}
+
+.carousel-caption h5 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    margin-bottom: 15px;
+}
+
+.carousel-caption p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: #f8f9fa;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Indicadores do carousel */
+.carousel-indicators button {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid #ffd700;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators button.active {
+    background: #ffd700;
+    transform: scale(1.2);
+}
+
+.carousel-indicators button:hover {
+    background: rgba(255, 215, 0, 0.7);
+    transform: scale(1.1);
+}
+
+/* Controles do carousel */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.carousel-control-prev {
+    left: 20px;
+}
+
+.carousel-control-next {
+    right: 20px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background: rgba(255, 215, 0, 0.9);
+    transform: translateY(-50%) scale(1.1);
+    border-color: #ffd700;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 25px;
+    height: 25px;
+    filter: brightness(0) invert(1);
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    filter: brightness(0);
+}
+
+/* Animações adicionais */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== RESPONSIVIDADE PARA PÁGINAS SOBRE E CARDÁPIO ===== */
+
+@media (max-width: 768px) {
+    #sobre {
+        margin: 30px 20px;
+        padding: 25px;
+        font-size: 1.1rem;
+    }
+    
+    #reserva {
+        padding: 15px 30px;
+        font-size: 1rem;
+    }
+    
+    #restaurante {
+        margin: 30px 20px;
+        border-radius: 15px;
+    }
+    
+    .carousel {
+        margin: 20px;
+        border-radius: 15px;
+    }
+    
+    .carousel-caption {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .carousel-caption h5 {
+        font-size: 1.8rem;
+    }
+    
+    .carousel-caption p {
+        font-size: 1rem;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .carousel-control-prev {
+        left: 10px;
+    }
+    
+    .carousel-control-next {
+        right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    #sobre {
+        margin: 15px 10px;
+        padding: 20px;
+        font-size: 1rem;
+    }
+    
+    #reserva {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .carousel-caption {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .carousel-caption h5 {
+        font-size: 1.5rem;
+    }
+    
+    .carousel-caption p {
+        font-size: 0.9rem;
+    }
+    
+    .carousel-indicators button {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* Efeitos especiais para interação */
+.carousel-item {
+    transition: transform 0.6s ease-in-out;
+}
+
+.carousel-item.active {
+    animation: zoomIn 0.8s ease-out;
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Efeito de parallax sutil para a imagem do restaurante */
+#restaurante {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Hover effect para toda a página sobre */
+body:has(#sobre) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background-size: 400% 400%;
+    animation: gradientMove 8s ease infinite;
+}
+
+@keyframes gradientMove {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Efeito especial para o texto da página sobre */
+#sobre::after {
+    content: '🍽️';
+    position: absolute;
+    bottom: -20px;
+    right: 30px;
+    font-size: 2rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+
+/* ===== CORREÇÕES ESPECÍFICAS PARA PÁGINA CARDÁPIO ===== */
+
+/* Garantindo que a navbar funcione corretamente em todas as páginas */
+.navbar.navbar-expand-lg.bg-body-tertiary[data-bs-theme="dark"] {
+    background: rgba(0, 0, 0, 0.9) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1000;
+}
+
+/* Forçando estilos da navbar para páginas sem link CSS */
+.navbar .navbar-brand {
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 700 !important;
+    font-size: 1.8rem !important;
+    color: #f8f9fa !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.navbar .navbar-brand:hover {
+    color: #ffd700 !important;
+    transform: scale(1.05);
+    text-decoration: none;
+}
+
+.navbar .nav-link {
+    font-weight: 500 !important;
+    color: #f8f9fa !important;
+    transition: all 0.3s ease;
+    position: relative;
+    text-decoration: none;
+}
+
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #ffd700;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar .nav-link:hover::after {
+    width: 100%;
+}
+
+.navbar .nav-link:hover {
+    color: #ffd700 !important;
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.navbar .nav-link:focus {
+    color: #ffd700 !important;
+    text-decoration: none;
+}
+
+/* Estilos específicos para o carousel na página cardápio */
+body:has(.carousel) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+/* Garantindo que o carousel tenha o espaçamento correto */
+.carousel.slide {
+    margin: 40px auto;
+    max-width: 1200px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Melhorando a responsividade da navbar */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: rgba(0, 0, 0, 0.95);
+        border-radius: 10px;
+        margin-top: 10px;
+        padding: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .navbar .nav-link {
+        padding: 10px 15px;
+        border-radius: 5px;
+        margin: 2px 0;
+    }
+    
+    .navbar .nav-link:hover {
+        background: rgba(255, 215, 0, 0.1);
+        transform: none;
+    }
+}
+
+/* Garantindo que o toggler funcione corretamente */
+.navbar-toggler {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 4px 8px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Adicionando animação de entrada para a página cardápio */
+.carousel {
+    animation: slideInFromBottom 0.8s ease-out;
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Garantindo que os links da navbar funcionem corretamente */
+.navbar .nav-link.active {
+    color: #ffd700 !important;
+    font-weight: 600 !important;
+}
+
+.navbar .nav-link.active::after {
+    width: 100%;
+}
+
+/* Melhorando a visibilidade do texto da navbar */
+.navbar .navbar-nav .nav-link {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Adicionando efeito de brilho na navbar */
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
